@@ -1,7 +1,7 @@
 DROP DATABASE IF EXISTS movies;
 CREATE DATABASE movies;
 
--- /c movies
+\c movies
 
 CREATE TABLE movie (
   ID SERIAL PRIMARY KEY,

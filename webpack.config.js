@@ -1,4 +1,5 @@
 let path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 // let DashboardPlugin = require('webpack-dashboard/plugin');
 
 const nodeEnv = process.env.NODE_ENV || 'development';
@@ -22,14 +23,15 @@ module.exports = {
            }
        ]
   },
-  // plugins: [
-  //     new DashboardPlugin()
-  // ],
+  plugins: [
+    new HtmlWebpackPlugin({
+      template: './src/client/index.html',
+    })
+  ],
   devServer: {
     contentBase: isProduction ? buildPath : sourcePath,
     historyApiFallback: true,
     port: 8888,
-    open: true,
     proxy: {
       "/api": "http://localhost:8080"
     },

@@ -13,7 +13,7 @@ var db = pgp(connectionString);
 function getAllMovies(req, res, next){
   db.any('select * from movie')
   .then(function(data){
-    res.state(200).json({
+    res.status(200).json({
       status: 'success',
       data: data
     })
@@ -78,12 +78,10 @@ function deleteMovie(req, res, next) {
   var movieID = parseInt(req.params.id);
   db.result('delete from movie where id = $1', movieID)
     .then(function (result) {
-      /* jshint ignore:start */
       res.status(200)
         .json({
           status: 'success',
         });
-      /* jshint ignore:end */
     })
     .catch(function (err) {
       return next(err);
