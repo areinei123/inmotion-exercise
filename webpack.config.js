@@ -9,7 +9,7 @@ const buildPath = path.join(__dirname, './dist');
 const testPath = path.join(__dirname, './test');
 
 module.exports = {
-  entry: './src/client/index.js',
+  entry: ['@babel/polyfill', './src/client/index.js'],
   output: {
     filename: 'bundle.js',
     path: path.resolve(__dirname, 'dist')
