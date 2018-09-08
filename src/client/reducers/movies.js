@@ -61,7 +61,7 @@ const movies = (
     case 'REQUEST_EDIT_FAILURE':
       return Object.assign({}, state, {
         loadingEdit: false,
-        loadingEditId: false
+        loadingEditId: false,
         actionError: true,
         actionErrorMessage: action.message
       })

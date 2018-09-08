@@ -41,27 +41,37 @@ function getSingleMovie(req, res, next) {
 function createMovie(req, res, next) {
   req.body.year = parseInt(req.body.year);
   req.body.rating = parseInt(req.body.rating);
+  req.body.actors = JSON.stringify(req.body.actors)
   db.none('insert into movie(title, genre, year, rating)' +
-      'values(${title}, ${genre}, ${year}, ${rating})',
-    req.body)
-    .then(function () {
-      res.status(200)
-        .json({
-          status: 'success',
-        });
-    })
-    .catch(function (err) {
-      return next(err);
-    });
+      'values(${title}, ${genre}, ${year}, ${rating}, ${actors})',
+      req.body)
+  // .then(function(id){
+  //   return handleActorsAndRoles({
+  //     body: {
+  //       actors: req.body.actors,
+  //       id: id
+  //     }  
+  //   })
+  // })
+  .then(function () {
+    res.status(200)
+      .json({
+        status: 'success',
+      });
+  })
+  .catch(function (err) {
+    return next(err);
+  });
 }
 
 function updateMovie(req, res, next) {
-  db.none('update movie set title=$1, genre=$2, year=$3, rating=$4 where id=$5',
+  db.none('update movie set title=$1, genre=$2, year=$3, rating=$4, actors=$5 where id=$6',
     [ req.body.title,
       req.body.genre,
       parseInt(req.body.year),
       parseInt(req.body.rating),
-      parseInt(req.params.id)
+      JSON.stringify(req.body.actors),
+      parseInt(req.body.id)
     ])
     .then(function () {
       res.status(200)
@@ -87,6 +97,10 @@ function deleteMovie(req, res, next) {
       return next(err);
     });
 }
+
+// function handleActorsAndRoles(req, res, next) {
+
+// }
 
 module.exports = {
   getAllMovies: getAllMovies,

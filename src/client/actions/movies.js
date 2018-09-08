@@ -54,9 +54,9 @@ export function deleteMovie(params){
   return function(dispatch){
     dispatch(requestDelete())
 
-    let request = fetch('/api/movies'. {
+    let request = fetch('/api/movies', {
       method: "DELETE",
-      headers: "Content-Type": "application/json",
+      headers: {"Content-Type": "application/json"},
       body: {
         "id": params.id
       }
@@ -68,7 +68,7 @@ export function deleteMovie(params){
       error => dispatch(requestDeleteError(error))
     )
     .then(() => {
-      dispatch(completeDelete
+      dispatch(completeDelete)
     })
   }
 }
@@ -77,7 +77,18 @@ export function editMovie(){
   return function(dispatch){
     dispatch(requestEdit())
 
-    let request = fetch('/api/movies')
+    let request = fetch('/api/movies', {
+      method: 'PUT',
+      headers: {'Content-Type': 'application/json'},
+      body: {
+        "title": params.title,
+        "genre": params.genre,
+        "year":  params.year,
+        "rating": params.rating,
+        "actors": params.actors,
+        "id": params.id
+      }
+    })
     
     return request
     .then(
