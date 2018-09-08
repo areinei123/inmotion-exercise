@@ -1,6 +1,7 @@
 import React from 'react'
 import NavigationCard from './NavigationCard.jsx'
 import Navigation from '../components/Navigation.jsx'
+import StatefulContent from '../containers/StatefulContent.jsx'
 
 class App extends React.Component {
   constructor(props){
@@ -20,6 +21,7 @@ class App extends React.Component {
           <h1 className='display-2 text-center'>InMovies</h1>
         </div>
         <Navigation/>
+        <StatefulContent/>
       </div>
     )
   }

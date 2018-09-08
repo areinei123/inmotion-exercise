@@ -16,9 +16,9 @@ const Navigation = () => {
         <div className='col'>
           <NavigationCard title='roles' icon=''/>
         </div>
-        <div className='col'>
-          <NavigationCard title='search' icon=''/>
-        </div>
+        {/*<div className='col'>
+                  <NavigationCard title='search' icon=''/>
+                </div>*/}
       </div>
     </div>
   )
