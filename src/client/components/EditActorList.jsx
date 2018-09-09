@@ -20,7 +20,7 @@ class EditActorList extends React.Component{
 
   onAddActor(){
     let newList = concat(this.props.actors, 
-        [{actor: this.state.newActor,
+        [{name: this.state.newActor,
           role: this.state.newRole
         }]
       )
@@ -57,27 +57,27 @@ class EditActorList extends React.Component{
       <div>
         {this.props.actors && this.props.actors.length > 0 && this.props.actors.map((actor, key) => 
         <div className='form-row'>
-          <div className="form-group col-md-4">
+          <div className="form-group col-md-6">
             <input type="text" className="form-control" placeholder="Actor"
               value={actor.name} onChange={() => this.onEditActor('actor', key, event)}/>
           </div>
-          <div className="form-group col-md-4">
+          <div className="form-group col-md-5">
             <input type="text" className="form-control" placeholder="Role"
               value={actor.role} onChange={() => this.onEditActor('role', key, event)}/>
           </div>
-          <button className='btn btn-sm form-group col' onClick={() => this.onDeleteActor(key)}>X</button>
+          <button className='btn button danger btn-sm form-group col-md-1' onClick={() => this.onDeleteActor(key)}>x</button>
         </div>
         )}
         <div className='form-row'>
-          <div className="form-group col">
+          <div className="form-group col-6">
             <input type="text" className="form-control" placeholder="Actor"
               value={this.state.newActor} onChange={this.onEditNewActor}/>
           </div>
-          <div className="form-group col">
+          <div className="form-group col-5">
             <input type="text" className="form-control" placeholder="Role"
               value={this.state.newRole} onChange={this.onEditNewRole}/>
           </div>
-          <button className='btn btn-sm form-group col' onClick={this.onAddActor}>Add</button>
+          <button className='btn btn-light btn-sm form-group col-1' onClick={this.onAddActor}>+</button>
         </div>
       </div>
     )

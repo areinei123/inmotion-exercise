@@ -27,16 +27,12 @@ export function createMovie(params){
   return function(dispatch){
     dispatch(requestCreate())
 
+    let body = JSON.stringify(params)
+
     let request = fetch('/api/movies', {
       method: 'POST',
       headers: {'Content-Type': 'application/json'},
-      body: {
-        "title": params.title,
-        "genre": params.genre,
-        "year":  params.year,
-        "rating": params.rating,
-        "actors": params.actors
-      }
+      body: body
     })
     
     return request
