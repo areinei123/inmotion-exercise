@@ -11,10 +11,9 @@ const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 const store = createStore(
   rootReducer, 
-  composeEnhancers(
-    applyMiddleware(
-      thunkMiddleware
-    )
+  compose(
+    applyMiddleware(thunkMiddleware),
+    window.devToolsExtension ? window.devToolsExtension() : f => f
   )
 )
 
@@ -22,6 +21,11 @@ store.dispatch(fetchMovies())
 .then(console.log('done'))
 
 ReactDOM.render(
-  <Provider store={store}><App/></Provider>
+  <Provider store={store}>
+    <App
+      movieDialog={store.getState().movies.movieDialog}
+      movieDialogParams={store.getState().movies.movieDialogParams}
+    />
+  </Provider>
   , document.getElementById('app')
 )

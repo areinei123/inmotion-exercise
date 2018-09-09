@@ -8,7 +8,7 @@ const mapStateToProps = (state, ownProps) => ({
 })
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
-  onClick: () => dispatch(newMovieDialog)
+  onClick: () => dispatch(newMovieDialog())
 })
 
 export default connect(

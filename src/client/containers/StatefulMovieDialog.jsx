@@ -1,15 +1,16 @@
 import {connect} from 'react-redux'
 import MovieDialog from '../components/MovieDialog.jsx'
-import {editMovie, createMovie} from '../actions/movies.js'
+import {editMovie, createMovie, changeMovieParams, closeMovieEditor} from '../actions/movies.js'
 
 const mapStateToProps = (state, ownProps) => ({
-  movie: movieDialogParams
+  params: state.movies.movieDialogParams
 })
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
-  onCreate: () => dispatch(createMovie(ownProps.params)),
-  onUpdate: () => dispatch(editMovie(ownProps.params)),
-  onChange: () => dispatch(changeMovieParams(ownProps.params))
+  onCreate: (params) => dispatch(createMovie(params)),
+  onUpdate: (params) => dispatch(editMovie(params)),
+  onChange: (params) => dispatch(changeMovieParams(params)),
+  onClose: () => dispatch(closeMovieEditor())
 })
 
 export default connect(

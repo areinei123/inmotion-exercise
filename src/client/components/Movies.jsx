@@ -8,7 +8,7 @@ const Movies = ({movies}) => {
   return (
     <div className='fluid-container'>
       <h1 className='display-4 text-center'>Movies</h1>
-      <CreateButton type='movie'/>
+      <CreateButton/>
       <table className='table'>
         <thead>
           <tr>
@@ -27,8 +27,8 @@ const Movies = ({movies}) => {
               <td scope='row'>{movie.genre}</td>
               <td scope='row'>{movie.year}</td>
               <td scope='row'>{movie.rating}</td>
-              <td scope='row'><EditButton/></td>
-              <td scope='row'><DeleteButton/></td>
+              <td scope='row'><EditButton movie={movie}/></td>
+              <td scope='row'><DeleteButton movie={movie}/></td>
             </tr>
           )}
         </tbody>

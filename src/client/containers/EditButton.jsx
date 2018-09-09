@@ -1,6 +1,6 @@
 import {connect} from 'react-redux'
 import Button from '../components/Button.jsx'
-import {editDocument} from '../actions/navigation.js'
+import {editMovieDialog} from '../actions/movies.js'
 
 const mapStateToProps = (state, ownProps) => ({
   label: 'edit',
@@ -8,7 +8,7 @@ const mapStateToProps = (state, ownProps) => ({
 })
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
-  onClick: () => dispatch(editMovie(ownProps.id))
+  onClick: () => dispatch(editMovieDialog(ownProps.movie))
 })
 
 export default connect(

@@ -179,7 +179,34 @@ export function requestEditError(error){
 
 export function newMovieDialog(){
   return {
-    type: 'NEW_MOVIE_DIALOG',
-    params: {actors: []}
+    type: 'OPEN_MOVIE_DIALOG',
+    params: {
+      title: '',
+      genre: 'none',
+      year: 2018,
+      rating: 0,
+      actors: []
+    }
+  }
+}
+
+export function editMovieDialog(params){
+  return {
+    type: 'OPEN_MOVIE_DIALOG',
+    params: params
+  }
+}
+
+export function changeMovieParams(params){
+  return {
+    type: 'EDIT_MOVIE_PARAMS',
+    params: params
+  }
+}
+
+export function closeMovieEditor(){
+  return {
+    type: 'CLOSE_MOVIE_EDITOR',
+    params: {}
   }
 }

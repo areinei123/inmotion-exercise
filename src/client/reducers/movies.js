@@ -80,10 +80,19 @@ const movies = (
         actionError: true,
         actionErrorMessage: action.message
       })
-    case 'NEW_MOVIE_DIALOG':
+    case 'OPEN_MOVIE_DIALOG':
       return Object.assign({}, state, {
         movieDialog: true,
+        movieDialogParams: action.params
+      })
+    case 'EDIT_MOVIE_PARAMS':
+      return Object.assign({}, state, {
+        movieDialogParams: action.params
+      })
+    case 'CLOSE_MOVIE_EDITOR':
+      return Object.assign({}, state, {
         movieDialogParams: action.params,
+        movieDialog: false
       })
     default: 
       return state
