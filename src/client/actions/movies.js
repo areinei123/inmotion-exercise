@@ -176,3 +176,10 @@ export function requestEditError(error){
     message: error
   }
 }
+
+export function newMovieDialog(){
+  return {
+    type: 'NEW_MOVIE_DIALOG',
+    params: {actors: []}
+  }
+}

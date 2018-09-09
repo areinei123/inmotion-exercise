@@ -1,14 +1,14 @@
 import {connect} from 'react-redux'
 import Button from '../components/Button.jsx'
-import {navigateToPage} from '../actions/navigation.js'
+import {newMovieDialog} from '../actions/movies.js'
 
 const mapStateToProps = (state, ownProps) => ({
-  label: 'edit',
+  label: 'New',
   color: 'success'
 })
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
-  onClick: () => dispatch(createMovie(ownProps.type, ownProps.id))
+  onClick: () => dispatch(newMovieDialog)
 })
 
 export default connect(

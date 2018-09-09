@@ -2,6 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import EditButton from '../containers/EditButton.jsx'
 import DeleteButton from '../containers/DeleteButton.jsx'
+import CreateButton from '../containers/CreateButton.jsx'
 
 const Movies = ({movies}) => {
   return (

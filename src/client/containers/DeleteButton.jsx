@@ -1,6 +1,6 @@
 import {connect} from 'react-redux'
 import Button from '../components/Button.jsx'
-import {navigateToPage} from '../actions/navigation.js'
+import {deleteMovie} from '../actions/movies.js'
 
 const mapStateToProps = (state, ownProps) => ({
   label: 'delete',

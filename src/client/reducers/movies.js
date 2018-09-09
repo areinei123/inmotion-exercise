@@ -10,6 +10,7 @@ const movies = (
     loadingEditId: false,
     loadingCreate: false,
     movieDialog: false,
+    movieDialogParams: {},
     actionError: false,
     actionErrorMessage: ''
   },
@@ -78,6 +79,11 @@ const movies = (
         loadingCreate: false,
         actionError: true,
         actionErrorMessage: action.message
+      })
+    case 'NEW_MOVIE_DIALOG':
+      return Object.assign({}, state, {
+        movieDialog: true,
+        movieDialogParams: action.params,
       })
     default: 
       return state
