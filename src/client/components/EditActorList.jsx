@@ -59,11 +59,11 @@ class EditActorList extends React.Component{
         <div className='form-row'>
           <div className="form-group col-md-6">
             <input type="text" className="form-control" placeholder="Actor"
-              value={actor.name} onChange={() => this.onEditActor('actor', key, event)}/>
+              value={actor.name} onChange={(event) => this.onEditActor('name', key, event)}/>
           </div>
           <div className="form-group col-md-5">
             <input type="text" className="form-control" placeholder="Role"
-              value={actor.role} onChange={() => this.onEditActor('role', key, event)}/>
+              value={actor.role} onChange={(event) => this.onEditActor('role', key, event)}/>
           </div>
           <button className='btn button danger btn-sm form-group col-md-1' onClick={() => this.onDeleteActor(key)}>x</button>
         </div>

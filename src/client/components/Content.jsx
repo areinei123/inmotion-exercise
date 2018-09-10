@@ -25,13 +25,13 @@ const Content = ({page, movies, movieDialog, movieDetails, movieSpotlight, searc
     case 'actors':
       return (
         <div>
-          <Actors/>
+          <Actors movies={movies}/>
         </div>
       )
     case 'roles':
       return (
         <div>
-          <Roles/>
+          <Roles movies={movies}/>
         </div>
       )
     default:

@@ -5,7 +5,7 @@ import {onSearchValueChange} from '../actions/movies.js'
 
 const mapStateToProps = (state, ownProps) => ({
   page: state.navigation.page,
-  movies: state.movies.filterMovies.length > 0 
+  movies: state.movies.filterMovies.length > 0
     ? state.movies.filterMovies
     : state.movies.movies,
   movieDialog: state.movies.movieDialog,
