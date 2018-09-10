@@ -4,7 +4,7 @@ import {openMovieDetails} from '../actions/movies.js'
 
 const mapStateToProps = (state, ownProps) => ({
   label: 'open',
-  color: 'success'
+  color: 'primary'
 })
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
