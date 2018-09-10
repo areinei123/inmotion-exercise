@@ -6,6 +6,8 @@ const mapStateToProps = (state, ownProps) => ({
   page: state.navigation.page,
   movies: state.movies.movies,
   movieDialog: state.movies.movieDialog,
+  movieDetails: state.movies.movieDetails,
+  movieSpotlight: state.movies.movieSpotlight
 })
 
 const mapDispatchToProps = (dispatch, ownProps) => ({

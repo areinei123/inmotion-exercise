@@ -22,10 +22,7 @@ store.dispatch(fetchMovies())
 
 ReactDOM.render(
   <Provider store={store}>
-    <App
-      movieDialog={store.getState().movies.movieDialog}
-      movieDialogParams={store.getState().movies.movieDialogParams}
-    />
+    <App/>
   </Provider>
   , document.getElementById('app')
 )

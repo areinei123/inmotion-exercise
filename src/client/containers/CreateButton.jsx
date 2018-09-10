@@ -3,7 +3,7 @@ import Button from '../components/Button.jsx'
 import {newMovieDialog} from '../actions/movies.js'
 
 const mapStateToProps = (state, ownProps) => ({
-  label: 'New',
+  label: 'New Movie',
   color: 'success'
 })
 

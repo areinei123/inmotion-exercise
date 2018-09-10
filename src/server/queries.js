@@ -42,8 +42,6 @@ function createMovie(req, res, next) {
   console.log(req.body)
   req.body.year = parseInt(req.body.year);
   req.body.rating = parseInt(req.body.rating);
-  console.log(req.body.actors)
-  // req.body.actors = 'array['+req.body.actors.map(actor => "'"+JSON.stringify(actor)+"'")+']::json[]';
   db.none('insert into movie(title, genre, year, rating, actors)' +
       'values(${title}, ${genre}, ${year}, ${rating}, ${actors}::json[])',
       req.body)
@@ -59,12 +57,13 @@ function createMovie(req, res, next) {
 }
 
 function updateMovie(req, res, next) {
+  console.log(req.body)
   db.none('update movie set title=$1, genre=$2, year=$3, rating=$4, actors=$5::json[] where id=$6',
     [ req.body.title,
       req.body.genre,
       parseInt(req.body.year),
       parseInt(req.body.rating),
-      JSON.stringify(req.body.actors),
+      req.body.actors,
       parseInt(req.body.id)
     ])
     .then(function () {
@@ -80,8 +79,9 @@ function updateMovie(req, res, next) {
 
 function deleteMovie(req, res, next) {
   var movieID = parseInt(req.params.id);
-  db.result('delete from movie where id = $1', movieID)
-    .then(function (result) {
+  console.log('delete from movie where id = ' + movieID)
+  db.none('delete from movie where id = $1', movieID)
+    .then(function () {
       res.status(200)
         .json({
           status: 'success',

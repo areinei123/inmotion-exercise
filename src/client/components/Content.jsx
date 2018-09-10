@@ -5,7 +5,7 @@ import Roles from '../components/Roles.jsx'
 import StatefulMovieDialog from '../containers/StatefulMovieDialog.jsx'
 
 
-const Content = ({page, movies, movieDialog, params}) => {
+const Content = ({page, movies, movieDialog, movieDetails,  movieSpotlight, params}) => {
   switch(page){
     case 'movies':
       return (
@@ -13,6 +13,9 @@ const Content = ({page, movies, movieDialog, params}) => {
           <Movies movies={movies}/>
           {movieDialog &&
             <StatefulMovieDialog/>
+          }
+          {movieDetails && 
+            <MovieDetails movie={movieSpotlight}/>
           }
         </div>
       )

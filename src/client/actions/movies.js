@@ -17,9 +17,7 @@ export function fetchMovies(){
       response => response.json(),
       error => dispatch(requestMoviesError(error))
     )
-    .then( json => {
-      dispatch(receiveMovies(json.data))
-    })
+    .then( json => dispatch(receiveMovies(json.data)))
   }
 }
 
@@ -37,63 +35,52 @@ export function createMovie(params){
     
     return request
     .then(
-      response => dispatch(fetchMovies),
+      response => dispatch(fetchMovies()),
       error => dispatch(requestCreateError(error))
     )
-    .then(() => {
-      dispatch(completeCreate)
-    })
+    .then(() => dispatch(completeCreate()))
   }
 }
 
-export function deleteMovie(params){
+export function deleteMovie(id){
   return function(dispatch){
-    dispatch(requestDelete())
+    dispatch(requestDelete(id))
 
-    let request = fetch('/api/movies', {
+    // let body = JSON.stringify(params)
+
+    let request = fetch('/api/movies/'+id, {
       method: "DELETE",
-      headers: {"Content-Type": "application/json"},
-      body: {
-        "id": params.id
-      }
+      headers: {"Content-Type": "application/json"}
+      // body: body
     })
     
     return request
     .then(
-      response => dispatch(requestMovies),
+      response => dispatch(fetchMovies()),
       error => dispatch(requestDeleteError(error))
     )
-    .then(() => {
-      dispatch(completeDelete)
-    })
+    .then(() => dispatch(completeDelete(id)))
   }
 }
 
-export function editMovie(){
+export function editMovie(params){
   return function(dispatch){
-    dispatch(requestEdit())
+    dispatch(requestEdit(params.id))
 
-    let request = fetch('/api/movies', {
+    let body = JSON.stringify(params)
+
+    let request = fetch('/api/movies/'+params.id, {
       method: 'PUT',
       headers: {'Content-Type': 'application/json'},
-      body: {
-        "title": params.title,
-        "genre": params.genre,
-        "year":  params.year,
-        "rating": params.rating,
-        "actors": params.actors,
-        "id": params.id
-      }
+      body: body
     })
     
     return request
     .then(
-      response => dispatch(fetchMovies),
+      response => dispatch(fetchMovies()),
       error => dispatch(requestEditError(error))
     )
-    .then( () => {
-      dispatch(requestEdit)
-    })
+    .then( () => dispatch(completeEdit(params.id)))
   }
 }
 
@@ -131,17 +118,15 @@ export function requestDeleteError(error){
   }
 }
 
-export function requestCreate(id, type){
+export function requestCreate(type){
   return {
     type: 'REQUEST_CREATE',
-    id: id
   }
 }
 
 export function completeCreate(id, type){
   return {
-    type: 'COMPLETE_CREATE',
-    id: id
+    type: 'COMPLETE_CREATE'
   }
 }
 

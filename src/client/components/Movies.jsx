@@ -28,7 +28,7 @@ const Movies = ({movies}) => {
               <td scope='row'>{movie.year}</td>
               <td scope='row'>{movie.rating}</td>
               <td scope='row'><EditButton movie={movie}/></td>
-              <td scope='row'><DeleteButton movie={movie}/></td>
+              <td scope='row'><DeleteButton id={movie.id}/></td>
             </tr>
           )}
         </tbody>

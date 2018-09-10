@@ -58,6 +58,7 @@ const movies = (
       return Object.assign({}, state, {
         loadingEdit: false,
         loadingEditId: false,
+        movieDialog: false
       })
     case 'REQUEST_EDIT_FAILURE':
       return Object.assign({}, state, {
@@ -72,7 +73,8 @@ const movies = (
       })
     case 'COMPLETE_CREATE':
       return Object.assign({}, state, {
-        loadingCreate: false
+        loadingCreate: false,
+        movieDialog: false
       })
     case 'REQUEST_CREATE_FAILURE':
       return Object.assign({}, state, {

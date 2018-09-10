@@ -2,45 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import {capitalize, assign} from 'lodash'
 import EditActorList from './EditActorList.jsx'
-
-  let modalOverlay = {
-    position: 'fixed',
-    top: 0,
-    bottom: 0,
-    left: 0,
-    right: 0,
-    backgroundColor: 'hsla(0, 0%, 70%, 0.5)',
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-    height: '100%',
-    width: '100%'
-  }
-
-  let modalContainer = {
-    borderRadius: '4px',
-    backgroundColor: 'white',
-    border: '1px solid gray',
-    padding: '15px',
-    width: '340px'
-  }
-
-  let modalHeader = {
-    borderBottom: '1px solid lightgray',
-    padding: '3px',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'space-between'
-  }
-
-  let modalBody = {
-    padding: '3px'
-  }
-
-  let modalFooter = {
-    borderTop: '1px solid lightgray',
-    padding: '3px'
-  }
+import Modal from '../style/modal.js'
 
 class MovieDialog extends React.Component{
   constructor(props){
@@ -108,25 +70,25 @@ class MovieDialog extends React.Component{
   render(){
 
   let genreOptions = [
-    'none',
-    'science fiction',
-    'horror',
-    'thriller',
-    'noir',
-    'action',
-    'comedy',
-    'drama',
-    'tear jerker'
+    'None',
+    'Science Fiction',
+    'Horror',
+    'Thriller',
+    'Noir',
+    'Action',
+    'Comedy',
+    'Drama',
+    'Tear Jerker'
   ]
 
   return (
-    <div style={modalOverlay}>
-      <div style={modalContainer}>
-        <div style={modalHeader}>
+    <div style={Modal.modalOverlay}>
+      <div style={Modal.modalContainer}>
+        <div style={Modal.modalHeader}>
           <h4>Movie Editor</h4>
           <span style={{fontSize: 30, marginBottom: '11px'}} onClick={this.onCloseDialog}>&times;</span>
         </div>
-        <div style={modalBody}>
+        <div style={Modal.modalBody}>
           <div>Title:</div>
           <input className="form-control" type="text"
             value={this.state.title}
@@ -136,7 +98,7 @@ class MovieDialog extends React.Component{
             value={this.state.genre}
             onChange={this.onGenreChange}>
             {genreOptions.map((option, key) => 
-              <option key={'genre-'+key}>{capitalize(option)}</option>
+              <option key={'genre-'+key}>{option}</option>
             )}
           </select>
           <div>Year:</div>
@@ -152,7 +114,7 @@ class MovieDialog extends React.Component{
             <EditActorList actors={this.state.actors} onChange={this.onActorsChange}/>
           </div>
         </div>
-        <div style={modalFooter}>
+        <div style={Modal.modalFooter}>
           <button style={{marginRight: '3px'}} type='button' className="btn btn-success" onClick={this.onSave}>Save</button>
           <button type='button' className="btn btn-secondary" onClick={this.onCloseDialog}>Cancel</button>
         </div>
