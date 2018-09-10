@@ -1,3 +1,5 @@
+import {filter, includes, values} from 'lodash'
+
 const movies = (
   state = {
     loadingMovies: false,
@@ -12,7 +14,11 @@ const movies = (
     movieDialog: false,
     movieDialogParams: {},
     actionError: false,
-    actionErrorMessage: ''
+    actionErrorMessage: '',
+    movieDetails: false,
+    movieSpotlight: {},
+    searchValue: '',
+    filterMovies: []
   },
   action
 ) => {
@@ -95,6 +101,23 @@ const movies = (
       return Object.assign({}, state, {
         movieDialogParams: action.params,
         movieDialog: false
+      })
+    case 'OPEN_MOVIE_DETAILS':
+      return Object.assign({}, state, {
+        movieDetails: true,
+        movieSpotlight: action.movie
+      })
+    case 'CLOSE_MOVIE_DETAILS':
+      return Object.assign({}, state, {
+        movieDetails: false,
+        movieSpotlight: {}
+      })
+    case 'SEARCH_VALUE_CHANGE':
+      return Object.assign({}, state, {
+        searchValue: action.value,
+        filterMovies: action.value !== ''
+          ? filter(state.movies, (movie) => includes(JSON.stringify(movie), action.value))
+          : []
       })
     default: 
       return state

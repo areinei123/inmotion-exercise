@@ -32,8 +32,8 @@ INSERT INTO movie (title, genre, year, rating, actors)
     'Science Fiction',
     1977,
     4,
-    array['{"actor": "Mark Hamill", "role": "Luke Skywalker"}',
-          '{"actor": "Carrie Fisher", "role": "Leia Organa"}']::json[]
+    array['{"name": "Mark Hamill", "role": "Luke Skywalker"}',
+          '{"name": "Carrie Fisher", "role": "Leia Organa"}']::json[]
     );
 
 -- INSERT INTO actor (name)

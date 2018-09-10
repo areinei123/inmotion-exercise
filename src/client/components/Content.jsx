@@ -1,21 +1,24 @@
 import React from 'react'
-import Movies from '../components/Movies.jsx'
-import Actors from '../components/Actors.jsx'
-import Roles from '../components/Roles.jsx'
+import Movies from './Movies.jsx'
+import Actors from './Actors.jsx'
+import Roles from './Roles.jsx'
 import StatefulMovieDialog from '../containers/StatefulMovieDialog.jsx'
+import StatefulMovieDetails from '../containers/StatefulMovieDetails.jsx'
+import SearchInput from './SearchInput.jsx'
 
 
-const Content = ({page, movies, movieDialog, movieDetails,  movieSpotlight, params}) => {
+const Content = ({page, movies, movieDialog, movieDetails, movieSpotlight, searchValue, filterMovies, onChange}) => {
   switch(page){
     case 'movies':
       return (
         <div>
-          <Movies movies={movies}/>
+          <SearchInput value={searchValue} onChange={onChange}/>
+          <Movies movies={filterMovies.length > 0 ? filterMovies : movies}/>
           {movieDialog &&
             <StatefulMovieDialog/>
           }
           {movieDetails && 
-            <MovieDetails movie={movieSpotlight}/>
+            <StatefulMovieDetails movie={movieSpotlight}/>
           }
         </div>
       )

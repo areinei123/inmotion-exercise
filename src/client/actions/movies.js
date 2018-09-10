@@ -191,3 +191,23 @@ export function closeMovieEditor(){
     params: {}
   }
 }
+
+export function openMovieDetails(movie){
+  return {
+    type: 'OPEN_MOVIE_DETAILS',
+    movie: movie
+  }
+}
+
+export function closeMovieDetails(){
+  return {
+    type: 'CLOSE_MOVIE_DETAILS'
+  }
+}
+
+export function onSearchValueChange(value){
+  return {
+    type: 'SEARCH_VALUE_CHANGE',
+    value: value
+  }
+}

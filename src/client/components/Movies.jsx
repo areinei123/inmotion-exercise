@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import EditButton from '../containers/EditButton.jsx'
 import DeleteButton from '../containers/DeleteButton.jsx'
 import CreateButton from '../containers/CreateButton.jsx'
+import OpenButton from '../containers/OpenButton.jsx'
 
 const Movies = ({movies}) => {
   return (
@@ -18,6 +19,7 @@ const Movies = ({movies}) => {
             <th scope='col'>Rating</th>
             <th scope='col'>Edit</th>
             <th scope='col'>Delete</th>
+            <th scope='col'>Details</th>
           </tr>
         </thead>
         <tbody>
@@ -29,6 +31,7 @@ const Movies = ({movies}) => {
               <td scope='row'>{movie.rating}</td>
               <td scope='row'><EditButton movie={movie}/></td>
               <td scope='row'><DeleteButton id={movie.id}/></td>
+              <td scope='row'><OpenButton movie={movie}/></td>
             </tr>
           )}
         </tbody>

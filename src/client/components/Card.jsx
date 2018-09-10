@@ -5,7 +5,7 @@ import {capitalize} from 'lodash'
 const Card = ({title, icon, active, page, onClick}) => {
 
   let colors = {
-    movies: 'info',
+    movies: 'primary',
     actors: 'success',
     roles: 'danger',
     search: 'warning'
